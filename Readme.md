@@ -31,18 +31,19 @@ The THEATRES table stores the list of all the theatres and their details.
 
 #### Attributes:
  A THEATRE table has the following attributes:
-- THEATRE_ID (PK)
+- THEATRE_ID
 - NAME
 - ADDRESS
 - CITY
 - PINCODE
 - CONTACT_NO
 - EMAIL_ID
-  
-#### Table Structure:
 
-| THEATRE_ID | NAME | ADDRESS | CITY | PINCODE | CONTACT_NO | EMAIL_ID |
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+#### Table Structure & Sample Data:
+
+| THEATRE_ID | NAME | ADDRESS | CITY | PINCODE | CONTACT_NO  | EMAIL_ID |
+| ---------- | ---- | ------- | ---- | ------- | ----------- | -------- |
+| 1          | PVR Gold  | Orion Uptown Mall     | Bangalore  | 560049  | 1234567890  | pvr@uptown
 
 
 ### SHOWS <a id="entity-shows"></a>
@@ -59,6 +60,13 @@ The SHOWS table stores the details of all the shows.
 - SHOW_PRICE
 - AGE_LIMIT
 
+#### Table Structure & Sample Data:
+
+| SHOW_ID | NAME | RELEASE_DATE | SHOW_TYPE | SHOW_DURATION_IN_MINUTES | SHOW_PRICE | AGE_LIMIT |
+| ------- | ---- | ----------- | -------- | ------------------------ | --------- | --------- |
+| 1       | Jumanji | 2022-01-01 | Movie | 120 | 100 | 12
+
+
 ### TICKETS <a id="entity-tickets"></a>
 
 #### Description:
@@ -67,14 +75,18 @@ The Tickets table stores the details of the tickets that a user books.
 #### Attributes:
 - TICKET_BOOKING_ID (PK)
 - TICKET_QUANTITY
-- TICKET_UNIT_PRICE
 - TICKET_DISCOUNT
-- TICKET_TOTAL_PRICE
+- BOOKING_AMOUNT
 - SHOW_ID (FK)
 - THEATRE_ID (FK)
 - THEATRE_SCREEN_ID (FK)
-- SEAT_ID (FK)
 - USER_ID (FK)
+
+#### Table Structure & Sample Data:
+
+| TICKET_BOOKING_ID | TICKET_QUANTITY | TICKET_DISCOUNT | BOOKING_AMOUNT | SHOW_ID | THEATRE_ID | THEATRE_SCREEN_ID | USER_ID |
+| ----------------- | --------------- | --------------- | -------------  | ------- | ---------- | ----------------- | ------- |
+| 1                 | 4               | 0            | 400              | 1               | 1       | 1         | 1                 
 
 ### TICKETS_SEATS <a id="entity-tickets-seats"></a>
 
@@ -84,6 +96,16 @@ The TICKETS_SEATS table stores the details of the seats in a theatre screen that
 #### Attributes:
 - TICKET_ID
 - SEAT_NAME
+
+#### Table Structure & Sample Data:
+
+| TICKET_ID | SEAT_NAME |
+| --------- | --------- |
+| 1         | A1        |
+| 1         | A2        |
+| 1         | A3        |
+| 1         | A8        |
+| 2         | A4        |
 
 ### THEATRES_SHOWS <a id="entity-theatres-shows"></a>
 
@@ -97,6 +119,15 @@ The THEATRES_SHOWS table stores the list of all the theatres and their details.
 - SHOW_START_TIME
 - SHOW_END_TIME
 - SCREEN_ID (FK)
+- SHOW_START_DATE
+- SHOW_END_DATE
+
+#### Table Structure & Sample Data:
+
+| THEATRE_SHOWS_ID | THEATRE_ID | SHOW_ID | SHOW_START_TIME | SHOW_END_TIME | SCREEN_ID | SHOW_START_DATE | SHOW_END_DATE |
+| ---------------- | ---------- | ------- | --------------- | ------------- | --------- | --------------  | ------------- |
+| 1                | 1          | 1       | 10:00           | 12:00         | 1         | 2023-01-01      | 2022-01-31 |
+
 
 ### SCREENS <a id="entity-screens"></a>
 
@@ -109,6 +140,11 @@ The SCREENS table stores the list of all the screens and their details in a thea
 - SCREEN_CAPACITY (FK)
 - THEATRE_ID (FK)
 
+#### Table Structure & Sample Data:
+
+| SCREEN_ID | SCREEN_NAME | SCREEN_CAPACITY | THEATRE_ID |
+| --------- | ----------- | --------------- | ---------- |
+| 1         | Screen 1    | 100             | 1          |
 
 
 
