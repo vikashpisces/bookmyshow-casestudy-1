@@ -38,7 +38,12 @@ The THEATRES table stores the list of all the theatres and their details.
 - PINCODE
 - CONTACT_NO
 - EMAIL_ID
-    
+  
+#### Table Structure:
+
+| THEATRE_ID | NAME | ADDRESS | CITY | PINCODE | CONTACT_NO | EMAIL_ID |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+
 
 ### SHOWS <a id="entity-shows"></a>
 
