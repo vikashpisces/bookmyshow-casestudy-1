@@ -124,9 +124,9 @@ The THEATRES_SHOWS table stores the list of all the theatres and their details.
 
 ##### Table Structure & Sample Data:
 
-| THEATRE_SHOW_ID | THEATRE_ID | SHOW_ID | SHOW_START_TIME | SHOW_END_TIME | SCREEN_ID | 
-| --------------- | ---------- | ------- | --------------- | ------------- | ----------|
-| 1                | 1          | 1       | 10:00           | 12:00         | 1        |
+| THEATRE_SHOW_ID | THEATRE_ID | SHOW_ID | SHOW_START_TIME | SHOW_END_TIME | SCREEN_ID | SHOW_START_DATE | SHOW_END_DATE |
+| --------------- | ---------- | ------- | --------------- | ------------- | ----------| --------------- | ------------- |
+| 1                | 1          | 1       | 10:00           | 12:00         | 1        | 2022-01-01     | 2022-01-31    |
 
 
 #### SCREENS <a id="entity-screens"></a>
@@ -178,3 +178,38 @@ This file is used to create the required tables mentioned in .
 
 - [dataInsertion.sql](dataInsertion.sql)
 This file is used to insert sample data into the tables mentioned in [List of Tables](#list-of-tables).
+
+## Solution - P2
+
+### Prerequisite
+- Make sure you have a database called BOOK_MY_SHOW_1.
+- Make sure to execute the SQL files in the same folder as this readme file as mentioned in Solution P1.
+- Make sure you have a active connection before executing these SQL files.
+
+### Usage
+- Execute the SQL File p2.sql in the same folder as this file.
+- It contains the query to list down all the shows on a given date at a given theatre along with their respective show timings.
+- Replace 'Your_Date' with your input date in the query, and theatre_id with your theatre id.
+- Try '2023-11-30', '2023-10-30', and '2023-09-30' as your input date and theatre_id as 2 for various results.
+
+### Outputs:
+- When Date is 2023-11-30:
+  
+  | showName | duration | price | name | address | startsAt |
+  | :--- | :--- | :--- | :--- | :--- | :--- |
+  | Baahubali 2 | 180 | 300.00 | INOX IMAX | IMAX Mall | 10:00:00 |
+  | Shershaah | 180 | 300.00 | INOX IMAX | IMAX Mall | 10:00:00 |
+  | Avengers: Endgame | 180 | 300.00 | INOX IMAX | IMAX Mall | 10:00:00 |
+
+- When Date is 2023-10-30:
+
+  | showName | duration | price | name | address | startsAt |
+  | :--- | :--- | :--- | :--- | :--- | :--- |
+  | Dilwale Dulhania Le Jayenge | 180 | 300.00 | INOX IMAX | IMAX Mall | 10:00:00 |
+  | DDLJ | 180 | 300.00 | INOX IMAX | IMAX Mall | 10:00:00 |
+
+- When any unmatched condition
+
+  | showName | duration | price | name | address | startsAt |
+  | :--- | :--- | :--- | :--- | :--- | :--- |
+   NO DATA
