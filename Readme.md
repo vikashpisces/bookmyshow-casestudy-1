@@ -165,6 +165,9 @@ The USERS table stores the list of all the registered users.
 | 1   | John Doe  | john.doe@abc.com | 9876543210 |
 
 
+### ER Diagram
+![ER-Diagram.png](ER-Diagram.png)
+
 ### SQL Files and their usage:
 All the below sql files are present in the same folder as this readme file. Following files should be executed in your favourite sql editor in the same order as listed below.
 
