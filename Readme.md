@@ -16,20 +16,21 @@ P2 - Write a query to list down all the shows on a given date at a given theatre
 - USERS (Who will book the tickets)
 
 
-### List of Tables
+### List Of Tables <a id="list-of-tables"></a>
 - [THEATRES](#entity-theatres) <br>
 - [SHOWS](#entity-shows) <br>
 - [TICKETS](#entity-tickets) <br>
 - [TICKETS_SEATS](#entity-tickets-seats) <br>
 - [THEATRES_SHOWS](#entity-theatres-shows) <br>
 - [SCREENS](#entity-screens) <br>
+- [USERS](#entity-users) <br>
     
-### THEATRES <a id="entity-theatres"></a>
+#### THEATRES <a id="entity-theatres"></a>
 
-#### Description:
+##### Description:
 The THEATRES table stores the list of all the theatres and their details.
 
-#### Attributes:
+##### Attributes:
  A THEATRE table has the following attributes:
 - THEATRE_ID
 - NAME
@@ -39,67 +40,68 @@ The THEATRES table stores the list of all the theatres and their details.
 - CONTACT_NO
 - EMAIL_ID
 
-#### Table Structure & Sample Data:
+#####Table Structure & Sample Data:
 
 | THEATRE_ID | NAME | ADDRESS | CITY | PINCODE | CONTACT_NO  | EMAIL_ID |
 | ---------- | ---- | ------- | ---- | ------- | ----------- | -------- |
 | 1          | PVR Gold  | Orion Uptown Mall     | Bangalore  | 560049  | 1234567890  | pvr@uptown
 
 
-### SHOWS <a id="entity-shows"></a>
+#### SHOWS <a id="entity-shows"></a>
 
-#### Description:
+##### Description:
 The SHOWS table stores the details of all the shows.
 
-#### Attributes:
+##### Attributes:
 - SHOW_ID
 - NAME
 - RELEASE_DATE
 - SHOW_TYPE
 - SHOW_DURATION_IN_MINUTES
 - SHOW_PRICE
-- AGE_LIMIT
+- AGE_LIMIT_IN_YEARS
 
-#### Table Structure & Sample Data:
+##### Table Structure & Sample Data:
 
-| SHOW_ID | NAME | RELEASE_DATE | SHOW_TYPE | SHOW_DURATION_IN_MINUTES | SHOW_PRICE | AGE_LIMIT |
+| SHOW_ID | NAME | RELEASE_DATE | SHOW_TYPE | SHOW_DURATION_IN_MINUTES | SHOW_PRICE | AGE_LIMIT_IN_YEARS |
 | ------- | ---- | ----------- | -------- | ------------------------ | --------- | --------- |
 | 1       | Jumanji | 2022-01-01 | Movie | 120 | 100 | 12
 
 
-### TICKETS <a id="entity-tickets"></a>
+#### TICKETS <a id="entity-tickets"></a>
 
-#### Description:
+##### Description:
 The Tickets table stores the details of the tickets that a user books.
 
-#### Attributes:
-- TICKET_BOOKING_ID (PK)
+##### Attributes:
+- TICKET_ID (PK)
+- TICKET_BOOKING_ID 
+- SHOW_ID (FK)
+- THEATRE_ID (FK)
+- SCREEN_ID (FK)
 - TICKET_QUANTITY
 - TICKET_DISCOUNT
 - BOOKING_AMOUNT
-- SHOW_ID (FK)
-- THEATRE_ID (FK)
-- THEATRE_SCREEN_ID (FK)
 - USER_ID (FK)
 
-#### Table Structure & Sample Data:
+##### Table Structure & Sample Data:
 
-| TICKET_BOOKING_ID | TICKET_QUANTITY | TICKET_DISCOUNT | BOOKING_AMOUNT | SHOW_ID | THEATRE_ID | THEATRE_SCREEN_ID | USER_ID |
-| ----------------- | --------------- | --------------- | -------------  | ------- | ---------- | ----------------- | ------- |
+| TICKET_BOOKING_ID | TICKET_QUANTITY | TICKET_DISCOUNT | BOOKING_AMOUNT | SHOW_ID | THEATRE_ID | SCREEN_ID | USER_ID |
+| ----------------- | --------------- | --------------- | -------------  | ------- | ---------- | --------- | ------- |
 | 1                 | 4               | 0            | 400              | 1               | 1       | 1         | 1                 
 
-### TICKETS_SEATS <a id="entity-tickets-seats"></a>
+#### TICKETS_SEATS <a id="entity-tickets-seats"></a>
 
-#### Description:
+##### Description:
 The TICKETS_SEATS table stores the details of the seats in a theatre screen that user has booked.
 
-#### Attributes:
+##### Attributes:
 - TICKET_ID
-- SEAT_NAME
+- SEAT_NO
 
-#### Table Structure & Sample Data:
+##### Table Structure & Sample Data:
 
-| TICKET_ID | SEAT_NAME |
+| TICKET_ID | SEAT_NO |
 | --------- | --------- |
 | 1         | A1        |
 | 1         | A2        |
@@ -107,49 +109,110 @@ The TICKETS_SEATS table stores the details of the seats in a theatre screen that
 | 1         | A8        |
 | 2         | A4        |
 
-### THEATRES_SHOWS <a id="entity-theatres-shows"></a>
+#### THEATRES_SHOWS <a id="entity-theatres-shows"></a>
 
-#### Description:
+##### Description:
 The THEATRES_SHOWS table stores the list of all the theatres and their details.
 
-#### Attributes: 
-- THEATRE_SHOWS_ID (PK)
+##### Attributes: 
+- THEATRE_SHOW_ID (PK)
 - THEATRE_ID (FK)
 - SHOW_ID (FK)
 - SHOW_START_TIME
 - SHOW_END_TIME
 - SCREEN_ID (FK)
-- SHOW_START_DATE
-- SHOW_END_DATE
 
-#### Table Structure & Sample Data:
+##### Table Structure & Sample Data:
 
-| THEATRE_SHOWS_ID | THEATRE_ID | SHOW_ID | SHOW_START_TIME | SHOW_END_TIME | SCREEN_ID | SHOW_START_DATE | SHOW_END_DATE |
-| ---------------- | ---------- | ------- | --------------- | ------------- | --------- | --------------  | ------------- |
-| 1                | 1          | 1       | 10:00           | 12:00         | 1         | 2023-01-01      | 2022-01-31 |
+| THEATRE_SHOW_ID | THEATRE_ID | SHOW_ID | SHOW_START_TIME | SHOW_END_TIME | SCREEN_ID | SHOW_START_DATE | SHOW_END_DATE |
+| --------------- | ---------- | ------- | --------------- | ------------- | ----------| --------------- | ------------- |
+| 1                | 1          | 1       | 10:00           | 12:00         | 1        | 2022-01-01     | 2022-01-31    |
 
 
-### SCREENS <a id="entity-screens"></a>
+#### SCREENS <a id="entity-screens"></a>
 
-#### Description:
+##### Description:
 The SCREENS table stores the list of all the screens and their details in a theatre.
 
-#### Attributes: 
+##### Attributes: 
 - SCREEN_ID (PK)
-- SCREEN_NAME (FK)
-- SCREEN_CAPACITY (FK)
+- SCREEN_NAME
+- SCREEN_CAPACITY
 - THEATRE_ID (FK)
 
-#### Table Structure & Sample Data:
+##### Table Structure & Sample Data:
 
 | SCREEN_ID | SCREEN_NAME | SCREEN_CAPACITY | THEATRE_ID |
 | --------- | ----------- | --------------- | ---------- |
 | 1         | Screen 1    | 100             | 1          |
 
 
+#### USERS <a id="entity-users"></a>
+
+##### Description:
+The USERS table stores the list of all the registered users.
+
+##### Attributes:
+- user_id
+- name
+- email_id
+- contact_no
+
+##### Table Structure & Sample Data:
+
+| user_id | name | email_id | contact_no |
+| ------- | -----| -------- | ---------- |
+| 1   | John Doe  | john.doe@abc.com | 9876543210 |
 
 
+### ER Diagram
+![ER-Diagram.png](ER-Diagram.png)
 
+### SQL Files and their usage:
+All the below sql files are present in the same folder as this readme file. Following files should be executed in your favourite sql editor in the same order as listed below.
 
-    
-    
+**NOTE**: Ensure that you have a active connection before executing these SQL files.
+
+- [dbCreation.sql](dbCreation.sql)
+This file is used to create the database. The database name is BOOK_MY_SHOW_1.
+
+- [TableSchema.sql](TableSchema.sql)
+This file is used to create the required tables mentioned in .
+
+- [dataInsertion.sql](dataInsertion.sql)
+This file is used to insert sample data into the tables mentioned in [List of Tables](#list-of-tables).
+
+## Solution - P2
+
+### Prerequisite
+- Make sure you have a database called BOOK_MY_SHOW_1.
+- Make sure to execute the SQL files in the same folder as this readme file as mentioned in Solution P1.
+- Make sure you have a active connection before executing these SQL files.
+
+### Usage
+- Execute the SQL File p2.sql in the same folder as this file.
+- It contains the query to list down all the shows on a given date at a given theatre along with their respective show timings.
+- Replace 'Your_Date' with your input date in the query, and theatre_id with your theatre id.
+- Try '2023-11-30', '2023-10-30', and '2023-09-30' as your input date and theatre_id as 2 for various results.
+
+### Outputs:
+- When Date is 2023-11-30:
+  
+  | showName | duration | price | name | address | startsAt |
+  | :--- | :--- | :--- | :--- | :--- | :--- |
+  | Baahubali 2 | 180 | 300.00 | INOX IMAX | IMAX Mall | 10:00:00 |
+  | Shershaah | 180 | 300.00 | INOX IMAX | IMAX Mall | 10:00:00 |
+  | Avengers: Endgame | 180 | 300.00 | INOX IMAX | IMAX Mall | 10:00:00 |
+
+- When Date is 2023-10-30:
+
+  | showName | duration | price | name | address | startsAt |
+  | :--- | :--- | :--- | :--- | :--- | :--- |
+  | Dilwale Dulhania Le Jayenge | 180 | 300.00 | INOX IMAX | IMAX Mall | 10:00:00 |
+  | DDLJ | 180 | 300.00 | INOX IMAX | IMAX Mall | 10:00:00 |
+
+- When any unmatched condition
+
+  | showName | duration | price | name | address | startsAt |
+  | :--- | :--- | :--- | :--- | :--- | :--- |
+   NO DATA
